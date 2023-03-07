@@ -1,14 +1,14 @@
 <div class="container">
 
     <div class="row g-4">
-        <div class="col-sm">
+        <div class="col-sm mt-4">
             <form action="">
 
                 <div>
 
-                    <select class="optionType form-control" placeholder="Select type" name="type" id="type"
+                    <select class="optionType form-control mt-4" placeholder="Select type" name="type" id="type"
                         [(ngModel)]="type" (ngModelChange)="getBrands()">
-                        <option value="">Select o tipo de veículo</option>
+                        <option value="">Selecione o tipo de veículo</option>
                         <option class="optionType" *ngFor="let t of types" [value]="t">
                             {{t}}
                         </option>
@@ -17,7 +17,7 @@
 
                 <div>
 
-                    <select class="form-control" placeholder="Select brand" name="brand" id="brand"
+                    <select class="form-control mt-4" placeholder="Select brand" name="brand" id="brand"
                         [(ngModel)]="brandCode" (ngModelChange)="getModels()">
                         <option value="">Selecione a marca</option>
                         <option *ngFor="let brand of brands" [value]="brand.codigo">
@@ -28,9 +28,9 @@
 
                 <div class="col-sm">
 
-                    <select class="form-control" placeholder="Select model" name="model" id="model"
+                    <select class="form-control mt-4" placeholder="Select model" name="model" id="model"
                         [(ngModel)]="modelCode" (ngModelChange)="getYears()">
-                        <option value="">Select o modelo de veículo</option>
+                        <option value="">Selecione o modelo de veículo</option>
                         <option *ngFor="let m of modelsVehicle" [value]="m.codigo">
                             {{m.nome}}
                         </option>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-sm">
-                    <select class="form-control" placeholder="Select brand" name="year" id="year" [(ngModel)]="yearCode"
+                    <select class="form-control mt-4" placeholder="Select brand" name="year" id="year" [(ngModel)]="yearCode"
                         (ngModelChange)="getVehicle()">
                         <option value="">Selecione o ano</option>
                         <option *ngFor="let y of years" [value]="y.codigo">
@@ -58,7 +58,7 @@
                         <input type="number" class="form-control" id="total-price" 
                         (keyup)="onKeyUp($event)" [ngModel]="valorDigitado">
                         
-                        <button type="submit" class="btn btn-outline-primary col-3 mx-auto ms-4"
+                        <button type="submit" class="btn btn-primary col-3 mx-auto ms-4"
                         (click)="onClick()">Consultar</button>
                     </div>
                 </div> 
