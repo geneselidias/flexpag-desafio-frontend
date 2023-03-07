@@ -1,0 +1,86 @@
+<div class="container">
+
+    <div class="row g-4">
+        <div class="col-sm">
+            <form action="">
+
+                <div>
+
+                    <select class="optionType form-control" placeholder="Select type" name="type" id="type"
+                        [(ngModel)]="type" (ngModelChange)="getBrands()">
+                        <option value="">Select o tipo de veículo</option>
+                        <option class="optionType" *ngFor="let t of types" [value]="t">
+                            {{t}}
+                        </option>
+                    </select>
+                </div>
+
+                <div>
+
+                    <select class="form-control" placeholder="Select brand" name="brand" id="brand"
+                        [(ngModel)]="brandCode" (ngModelChange)="getModels()">
+                        <option value="">Selecione a marca</option>
+                        <option *ngFor="let brand of brands" [value]="brand.codigo">
+                            {{brand.nome}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-sm">
+
+                    <select class="form-control" placeholder="Select model" name="model" id="model"
+                        [(ngModel)]="modelCode" (ngModelChange)="getYears()">
+                        <option value="">Select o modelo de veículo</option>
+                        <option *ngFor="let m of modelsVehicle" [value]="m.codigo">
+                            {{m.nome}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-sm">
+                    <select class="form-control" placeholder="Select brand" name="year" id="year" [(ngModel)]="yearCode"
+                        (ngModelChange)="getVehicle()">
+                        <option value="">Selecione o ano</option>
+                        <option *ngFor="let y of years" [value]="y.codigo">
+                            {{y.nome}}
+                        </option>
+                    </select>
+                </div>
+            </form>
+
+
+            <form class="row gy-1 gx-2 align-items-center">
+                <!--O gy e gx define quantas linhas haverá no eixo vertical e eixo horizontal, respectivamente -->        
+                <div class="col-auto mt-4">
+                    <label for="total-price">Valor Total</label>
+                    <div class="input-group">
+                        <span class="input-group-text">R$</span>
+                        <input type="number" class="form-control" id="total-price" 
+                        (keyup)="onKeyUp($event)" [ngModel]="valorDigitado">
+                        
+                        <button type="submit" class="btn btn-outline-primary col-3 mx-auto ms-4"
+                        (click)="onClick()">Consultar</button>
+                    </div>
+                </div> 
+            </form>
+        
+
+            <div *ngIf="display">
+
+                <h1>Resultados</h1>
+                <p>Marca: {{ vehicle.Marca }} </p>
+                <p>Modelo: {{ vehicle.Modelo }} </p>
+                <p>Ano: {{ vehicle.AnoModelo }}</p>
+                <p>Combustível: {{ vehicle.Combustivel }}</p>
+                <p>Mês de Referência: {{ vehicle.MesReferencia }} </p>
+                <p>Valor FIPE: {{vehicle.Valor }}</p>
+                <p>Valor Digitado: {{ valorDigitado | currency: 'BRL'}}</p>
+
+
+                <p>{{ msg }} </p>
+                <p>{{ resultadoFinal  }} %</p>
+            </div>
+
+
+        </div>
+    </div>
